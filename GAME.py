@@ -46,16 +46,23 @@ print("\nHello {0}!".format(playerName))
 pet = PET()
 
 #Choose your pet!
-#pet.isA = input("Please choose one of these pets: {0}, {1} or {2}\n".format(pets.Cat.name, pets.Dog.name, pets.Python.name))
-if (not (\
-       (pet.isA.upper=="CAT") or \
-       (pet.isA.upper=="DOG") or \
-       (pet.isA.upper=="PYTHON"))    ):
+pet.isA = input("Please choose one of these pets: {0}, {1} or {2}\n".format(pets.Cat.name, pets.Dog.name, pets.Python.name))
+while (not (\
+       (pet.isA.upper()=="CAT") or \
+       (pet.isA.upper()=="DOG") or \
+       (pet.isA.upper()=="PYTHON"))    ):
     pet.isA = input("Please choose one of these pets: {0}, {1} or {2}\n".format(pets.Cat.name, pets.Dog.name, pets.Python.name))
-    
+
+#Choose your pet's name!
 pet.name = input("What is your {0}'s name?\n".format(pet.isA))
+
+#Choose your pet's color!
 pet.color = input("Alright {0}! What color is {1}? (blue, red, green)\n".format(playerName,pet.name))
-#while pet.
+while (not (\
+       (pet.color.upper()=="BLUE") or \
+       (pet.color.upper()=="RED") or \
+       (pet.color.upper()=="GREEN"))    ):
+    pet.color = input("Alright {0}! What color is {1}? (blue, red, green)\n".format(playerName,pet.name))
     
 #Game start!
 input("Alright! Just hit enter to start!\n")
@@ -72,31 +79,34 @@ def main():
         if (pet.health<=0 or pet.thirst>=10):
             gameOver()
             break
-        if (pet.health>=30):
+        """If your pet is extrememly healthy, it is immortal. You win!"""
+        if (pet.health>=25):
             print("{0} is immortal now!".format(pet.name))
+            print("GAME OVER!")
             pet.dead=True
             break;
+        
         """Maintain your pet"""
         """FOOD"""
         food = str( input("Will you feed {0}? (y/n)\n".format(pet.name)) )
         if (food.strip().upper()=="Y"):
-            pet.health+=1
+            pet.health+=1#increase health by one
         else:
-            pet.health-=2
+            pet.health-=2#decrease health by two
         if (pet.health < 0):
-            pet.health=0
+            pet.health=0 #prevent less than zero
             
         """WATER"""
         water = str( input("Will you give {0} a drink of water? (y/n)\n".format(pet.name)) )
         if (water.strip().upper()=="Y"):
-            pet.thirst-=1
+            pet.thirst-=1#decrease thirst by one
             if (pet.thirst < 0):
-                pet.thirst=0
+                pet.thirst=0#prevent less than zero
         else:
-            pet.thirst+=2
+            pet.thirst+=2#increase thirst by one
         
         print("\n")#skip a line!
 
-
+#main function runner
 if __name__ == '__main__':
     main()
