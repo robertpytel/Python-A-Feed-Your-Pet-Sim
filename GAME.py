@@ -104,6 +104,7 @@ def main():
         # Introduction
         player.playerName = input("Hello! Welcome to Pet Sim!\n"
                                   "What is your name?\n")
+        print(player.playerName)
         print("\nHello {0}!".format(player.playerName))
 
         # Choose your pet!
@@ -118,10 +119,13 @@ def main():
             player.pet.isA = input(
                     "Please choose one of these pets: {0}, {1} or {2}\n"
                     .format(pets.Cat.name, pets.Dog.name, pets.Python.name))
+            print(player.pet.isA)
+        print(player.pet.isA)
 
         # Choose your pet's name!
         player.pet.name = input(
                 "What is your {0}'s name?\n".format(player.pet.isA))
+        print(player.pet.name)
 
         # Choose your pet's color!
         player.pet.color = input(
@@ -134,19 +138,22 @@ def main():
             player.pet.color = input(
                     "Alright {0}! What color is {1}? (blue, red, green)"
                     "\n".format(player.playerName, player.pet.name))
+            print(player.pet.color)
+        print(player.pet.color)
 
         playGame(player.playerName, player.pet)
 
         replay = input(
                 "{0}, will you play again? (y/n)\n"
                 .format(player.playerName))
-
         while (not (
                (replay.upper() == "Y") or
                (replay.upper() == "N"))):
             replay = input(
                 "{0}, will you play again? (y/n)\n"
                 .format(player.playerName))
+            print(replay)
+        print(replay)
 
         if (replay.upper() == "Y"):
             RESET = True
