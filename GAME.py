@@ -116,10 +116,10 @@ def main():
                (player.pet.isA.upper() == "CAT") or
                (player.pet.isA.upper() == "DOG") or
                (player.pet.isA.upper() == "PYTHON"))):
+            print(player.pet.isA)
             player.pet.isA = input(
                     "Please choose one of these pets: {0}, {1} or {2}\n"
                     .format(pets.Cat.name, pets.Dog.name, pets.Python.name))
-            print(player.pet.isA)
         print(player.pet.isA)
 
         # Choose your pet's name!
@@ -135,10 +135,10 @@ def main():
                (player.pet.color.upper() == "BLUE") or
                (player.pet.color.upper() == "RED") or
                (player.pet.color.upper() == "GREEN"))):
+            print(player.pet.color)
             player.pet.color = input(
                     "Alright {0}! What color is {1}? (blue, red, green)"
                     "\n".format(player.playerName, player.pet.name))
-            print(player.pet.color)
         print(player.pet.color)
 
         playGame(player.playerName, player.pet)
@@ -149,10 +149,10 @@ def main():
         while (not (
                (replay.upper() == "Y") or
                (replay.upper() == "N"))):
+            print(replay)
             replay = input(
                 "{0}, will you play again? (y/n)\n"
                 .format(player.playerName))
-            print(replay)
         print(replay)
 
         if (replay.upper() == "Y"):
