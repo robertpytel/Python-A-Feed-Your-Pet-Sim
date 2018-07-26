@@ -72,6 +72,13 @@ def playGame(playerName, pet):
         """Maintain your pet"""
         """FOOD"""
         food = input("Will you feed {0}? (y/n)\n".format(pet.name))
+        while (not
+               (food.upper() == "Y" or
+                food.upper() == "N")):
+            print(food)
+            food = input("Will you feed {0}? (y/n)\n".format(pet.name))
+        print(food)
+
         if (food.strip().upper() == "Y"):
             pet.health += 1  # increase health by one
         else:
@@ -82,14 +89,20 @@ def playGame(playerName, pet):
         """WATER"""
         water = input("Will you give {0} a drink of water? (y/n)\n"
                       .format(pet.name))
+        while (not
+               (water.upper() == "Y" or
+                water.upper() == "N")):
+            print(water)
+            water = input("Will you give {0} a drink of water? (y/n)\n"
+                          .format(pet.name))
+        print(water)
+
         if (water.strip().upper() == "Y"):
             pet.thirst -= 1  # decrease thirst by one
             if (pet.thirst < 0):
                 pet.thirst = 0  # prevent less than zero
         else:
             pet.thirst += 2  # increase thirst by one
-
-        # print("\n")  # skip a line!
 
 
 def main():
