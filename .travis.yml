@@ -6,7 +6,5 @@ before_install:
  - easy_install distribute
 install:
  - pip install -r requirements.txt
- - pip install random
- - pip install enum
 script:
  - python GAME.py
