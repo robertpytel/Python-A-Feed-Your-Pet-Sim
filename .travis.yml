@@ -1,0 +1,12 @@
+﻿language: python
+python:
+ - "3.6"
+cache: pip
+before_install:
+ - easy_install distribute
+install:
+ - pip install -r requirements.txt
+ - pip install pandas
+ - pip install matplotlib
+script:
+ - python "Graphing Gyroscopes and Linear Acceleration".py
