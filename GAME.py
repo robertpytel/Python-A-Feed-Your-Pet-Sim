@@ -45,7 +45,7 @@ class Pet:
 
 
 def gameOver(pet):
-    print ("GAME OVER! {0} DIED!".format(pet.name))
+    print("GAME OVER! {0} DIED!".format(pet.name))
     pet.dead = True
 
 
@@ -177,4 +177,3 @@ def main():
 # main function runner
 if __name__ == '__main__':
     main()
-
