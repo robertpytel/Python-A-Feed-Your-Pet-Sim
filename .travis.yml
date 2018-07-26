@@ -6,7 +6,7 @@ before_install:
  - easy_install distribute
 install:
  - pip install -r requirements.txt
- - pip install pandas
- - pip install matplotlib
+ - pip install random
+ - pip install enum
 script:
- - python "Graphing Gyroscopes and Linear Acceleration".py
+ - python GAME.py
