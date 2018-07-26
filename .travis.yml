@@ -8,6 +8,5 @@ install:
  - pip install pep8
  - pip install -r requirements.txt
 script:
- - pep8 GAME.py
  - python GAME.py < commands.txt
  
