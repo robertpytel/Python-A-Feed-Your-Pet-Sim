@@ -5,8 +5,8 @@ cache: pip
 before_install:
  - easy_install distribute
 install:
- - pip install pep8
+ - pip install pycodestyle
  - pip install -r requirements.txt
 script:
+ - pycodestyle GAME.py
  - python GAME.py < commands.txt
- 
