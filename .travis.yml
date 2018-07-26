@@ -5,7 +5,9 @@ cache: pip
 before_install:
  - easy_install distribute
 install:
+ - pip install pycodestyle
  - pip install -r requirements.txt
 script:
- - python GAME.py
- - "Fluffy"
+ - pycodestyele GAME.py
+ - python GAME.py < commands.txt
+ 
