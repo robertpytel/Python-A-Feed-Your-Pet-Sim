@@ -30,7 +30,12 @@ class pets(Enum):
     Python = 3
 
 
-class PET:
+class Player:
+    playerName = ""
+    pet = {}
+
+
+class Pet:
     dead = False
     isA = ""
     color = ""
@@ -39,55 +44,23 @@ class PET:
     thirst = 0
 
 
-def gameOver():
+def gameOver(pet):
     print ("GAME OVER! {0} DIED!".format(pet.name))
     pet.dead = True
 
 
-# Introduction
-playerName = input("Hello! Welcome to Pet Sim!\nWhat is your name?\n")
-print("\nHello {0}!".format(playerName))
-
-pet = PET()
-
-# Choose your pet!
-pet.isA = input("Please choose one of these pets: {0}, {1} or {2}\n".format(
-    pets.Cat.name, pets.Dog.name, pets.Python.name))
-while (not (
-       (pet.isA.upper() == "CAT") or
-       (pet.isA.upper() == "DOG") or
-       (pet.isA.upper() == "PYTHON"))):
-    pet.isA = input("Please choose one of these pets: {0}, {1} or {2}\n"
-                    .format(pets.Cat.name, pets.Dog.name, pets.Python.name))
-
-# Choose your pet's name!
-pet.name = input("What is your {0}'s name?\n".format(pet.isA))
-
-# Choose your pet's color!
-pet.color = input("Alright {0}! What color is {1}? (blue, red, green)\n"
-                  .format(playerName, pet.name))
-while (not (
-       (pet.color.upper() == "BLUE") or
-       (pet.color.upper() == "RED") or
-       (pet.color.upper() == "GREEN"))):
-    pet.color = input("Alright {0}! What color is {1}? (blue, red, green)\n"
-                      .format(playerName, pet.name))
-
 # Game start!
-input("Alright! Just hit enter to start!\n")
-
-
-def main():
+def playGame(playerName, pet):
     while (not pet.dead):
         """Pet STATS"""
-        print(playerName)
+        print('\n'+playerName)
         print("{0}, your {1} {2}".format(pet.name, pet.color, pet.isA))
         print("health: {0}".format(pet.health))
         print("thirst: {0}".format(pet.thirst))
 
         """If your pet is dead, game over"""
         if (pet.health <= 0 or pet.thirst >= 10):
-            gameOver()
+            gameOver(pet)
             break
         """If your pet is extrememly healthy, it is immortal. You win!"""
         if (pet.health >= 25):
@@ -116,10 +89,71 @@ def main():
         else:
             pet.thirst += 2  # increase thirst by one
 
-        print("\n")  # skip a line!
+        # print("\n")  # skip a line!
+
+
+def main():
+
+    RESET = True  # to reset the game
+
+    while (RESET):
+
+        player = Player()   # Player object
+        player.pet = Pet()  # Player object's Pet
+
+        # Introduction
+        player.playerName = input("Hello! Welcome to Pet Sim!\n"
+                                  "What is your name?\n")
+        print("\nHello {0}!".format(player.playerName))
+
+        # Choose your pet!
+        player.pet.isA = input(
+                "Please choose one of these pets: "
+                "{0}, {1} or {2}\n"
+                .format(pets.Cat.name, pets.Dog.name, pets.Python.name))
+        while (not (
+               (player.pet.isA.upper() == "CAT") or
+               (player.pet.isA.upper() == "DOG") or
+               (player.pet.isA.upper() == "PYTHON"))):
+            player.pet.isA = input(
+                    "Please choose one of these pets: {0}, {1} or {2}\n"
+                    .format(pets.Cat.name, pets.Dog.name, pets.Python.name))
+
+        # Choose your pet's name!
+        player.pet.name = input(
+                "What is your {0}'s name?\n".format(player.pet.isA))
+
+        # Choose your pet's color!
+        player.pet.color = input(
+            "Alright {0}! What color is {1}? (blue, red, green)\n"
+            .format(player.playerName, player.pet.name))
+        while (not (
+               (player.pet.color.upper() == "BLUE") or
+               (player.pet.color.upper() == "RED") or
+               (player.pet.color.upper() == "GREEN"))):
+            player.pet.color = input(
+                    "Alright {0}! What color is {1}? (blue, red, green)"
+                    "\n".format(player.playerName, player.pet.name))
+
+        playGame(player.playerName, player.pet)
+
+        replay = input(
+                "{0}, will you play again? (y/n)\n"
+                .format(player.playerName))
+
+        while (not (
+               (replay.upper() == "Y") or
+               (replay.upper() == "N"))):
+            replay = input(
+                "{0}, will you play again? (y/n)\n"
+                .format(player.playerName))
+
+        if (replay.upper() == "Y"):
+            RESET = True
+        else:
+            RESET = False
 
 
 # main function runner
 if __name__ == '__main__':
     main()
-
